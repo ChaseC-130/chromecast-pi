@@ -6,6 +6,7 @@ CAST_NAME = "Living Room TV"
 def main():
     time.sleep(5)
     chromecasts, browser = pychromecast.get_chromecasts()
+    print(chromecasts)
     cast = next(
       (cc for cc in chromecasts
          if getattr(cc, 'friendly_name', cc.name) == CAST_NAME),
