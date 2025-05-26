@@ -12,7 +12,7 @@ def main():
     time.sleep(5)
     # discover chromecasts
     chromecasts, browser = pychromecast.get_chromecasts()
-    cast = next(cc for cc in chromecasts if cc.device.friendly_name == CAST_NAME)
+    cast = next((cc for cc in chromecasts if getattr(cc, 'friendly_name', cc.name) == CAST_NAME), None)
     cast.wait()
 
     # 1) launch your custom receiver
